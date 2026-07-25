@@ -1,0 +1,35 @@
+﻿@model List<LmsProject.Models.Assignment>
+
+@{
+    ViewData["Title"] = "Assignments";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Assignments</h2>
+    <a href="/Assignment/Create" class="btn btn-primary">+ Add Assignment</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Course</th>
+            <th>Deadline</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Id</td>
+                <td>@a.Title</td>
+                <td>@a.Course?.Title</td>
+                <td>@a.Deadline.ToString("yyyy-MM-dd")</td>
+                <td><a href="/Submission/Create?assignmentId=@a.Id" class="btn btn-sm btn-primary">Submit</a></td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

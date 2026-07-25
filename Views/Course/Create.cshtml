@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Add Course";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h3 class="mb-4">Add New Course</h3>
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <select name="categoryId" class="form-select" required>
+                            <option value="">-- Select Category --</option>
+                            @foreach (var cat in ViewBag.Categories)
+                            {
+                                <option value="@cat.Id">@cat.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Teacher</label>
+                        <select name="teacherId" class="form-select" required>
+                            <option value="">-- Select Teacher --</option>
+                            @foreach (var t in ViewBag.Teachers)
+                            {
+                                <option value="@t.Id">@t.FullName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

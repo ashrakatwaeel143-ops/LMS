@@ -1,0 +1,30 @@
+﻿@model List<LmsProject.Models.Lesson>
+
+@{
+    ViewData["Title"] = "Lessons";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Lessons</h2>
+    <a href="/Lesson/Create" class="btn btn-primary">+ Add Lesson</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Course</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var l in Model)
+        {
+            <tr>
+                <td>@l.Id</td>
+                <td>@l.Title</td>
+                <td>@l.Course?.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>

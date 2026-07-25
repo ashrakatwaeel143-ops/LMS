@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Submit Assignment";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h3 class="mb-4">Submit Assignment</h3>
+                <form method="post">
+                    <input type="hidden" name="assignmentId" value="@ViewBag.AssignmentId" />
+
+                    <div class="mb-3">
+                        <label class="form-label">Your Answer</label>
+                        <textarea name="content" class="form-control" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

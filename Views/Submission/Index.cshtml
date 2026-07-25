@@ -1,0 +1,29 @@
+﻿@model List<LmsProject.Models.Submission>
+
+@{
+    ViewData["Title"] = "My Submissions";
+}
+
+<h2 class="mb-4">My Submissions</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Assignment</th>
+            <th>Submitted At</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Assignment?.Title</td>
+                <td>@s.SubmittedAt.ToString("AA")</td>
+                <td>@(s.Grade != null ? s.Grade.ToString() : "Not graded yet")</td>
+            </tr>
+        }
+    </tbody>
+</table>

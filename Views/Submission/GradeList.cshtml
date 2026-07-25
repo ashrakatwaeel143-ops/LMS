@@ -1,0 +1,40 @@
+﻿@model List<LmsProject.Models.Submission>
+
+@{
+    ViewData["Title"] = "Grade Submissions";
+}
+
+<h2 class="mb-4">Grade Submissions</h2>
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Student</th>
+            <th>Assignment</th>
+            <th>Answer</th>
+            <th>Submitted At</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Student?.FullName</td>
+                <td>@s.Assignment?.Title</td>
+                <td>@s.Content</td>
+                <td>@s.SubmittedAt.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <form asp-action="Grade" method="post" class="d-flex gap-2">
+                        <input type="hidden" name="id" value="@s.Id" />
+                        <input type="number" name="grade" class="form-control form-control-sm" style="width:80px"
+                               value="@s.Grade" min="0" max="100" required />
+                        <button type="submit" class="btn btn-sm btn-success">Save</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

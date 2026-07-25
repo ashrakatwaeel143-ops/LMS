@@ -1,0 +1,32 @@
+﻿@model List<LmsProject.Models.Enrollment>
+
+@{
+    ViewData["Title"] = "Enrollments";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Enrollments</h2>
+    <a href="/Enrollment/Create" class="btn btn-primary">+ Enroll Student</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Enrolled At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.Id</td>
+                <td>@e.Student?.FullName</td>
+                <td>@e.Course?.Title</td>
+                <td>@e.EnrolledAt.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+    </tbody>
+</table>
